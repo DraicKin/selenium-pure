@@ -3,6 +3,8 @@ package selenium.pure.page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -42,5 +44,13 @@ public class BasePage {
 
     public void waitForVisibilityOfElementLocated(By by) {
         actionWait.until(ExpectedConditions.visibilityOfElementLocated(by));
+    }
+
+    public String getCurrentUrl() {
+        return driver().getCurrentUrl();
+    }
+
+    public void scrollToElementLocated(By by) {
+        new Actions(driver()).scrollToElement(getElement(by));
     }
 }
